@@ -15,7 +15,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import com.github.marcosws.crs.view.mdi.chid.register.ClientView;
+import com.github.marcosws.crs.view.mdi.chid.register.UserView;
 import com.github.marcosws.crs.view.mdi.chid.register.vehicle.AutomakerView;
+import com.github.marcosws.crs.view.mdi.chid.register.vehicle.CategoryView;
+import com.github.marcosws.crs.view.mdi.chid.register.vehicle.ModelView;
+import com.github.marcosws.crs.view.mdi.chid.register.vehicle.TypeView;
+import com.github.marcosws.crs.view.mdi.chid.register.vehicle.VehicleView;
 import com.github.marcosws.crs.view.mdi.utils.CRSDimension;
 import com.github.marcosws.crs.view.mdi.utils.CRSStatusBar;
 
@@ -144,6 +150,12 @@ public class CRSMainView extends JFrame implements ActionListener {
 		
 		this.setVisible(true);
 		jMenuItemAutomaker.addActionListener(this);
+		jMenuItemModel.addActionListener(this);
+		jMenuItemCategory.addActionListener(this);
+		jMenuItemType.addActionListener(this);
+		jMenuItemVehicle.addActionListener(this);
+		jMenuItemClient.addActionListener(this);
+		jMenuItemUser.addActionListener(this);
 		
         GraphicsEnvironment gEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle bounds  = gEnvironment.getMaximumWindowBounds();
@@ -163,6 +175,49 @@ public class CRSMainView extends JFrame implements ActionListener {
 			jDesktopPane.add(automakerView.getFrame());
 			
 		}
+		else if(event.getSource().equals(jMenuItemModel)) {
+			
+			ModelView modelView = new ModelView();
+			modelView.initialize();
+			jDesktopPane.add(modelView.getFrame());
+			
+		}
+		else if(event.getSource().equals(jMenuItemCategory)) {
+			
+			CategoryView categoryView = new CategoryView();
+			categoryView.initialize();
+			jDesktopPane.add(categoryView.getFrame());
+			
+		}
+		else if(event.getSource().equals(jMenuItemType)) {
+			
+			TypeView typeView = new TypeView();
+			typeView.initialize();
+			jDesktopPane.add(typeView.getFrame());
+			
+		}
+		else if(event.getSource().equals(jMenuItemVehicle)) {
+			
+			VehicleView vehicleView = new VehicleView();
+			vehicleView.initialize();
+			jDesktopPane.add(vehicleView.getFrame());
+			
+		}
+		else if(event.getSource().equals(jMenuItemClient)) {
+			
+			ClientView clientView = new ClientView();
+			clientView.initialize();
+			jDesktopPane.add(clientView.getFrame());
+			
+		}
+		else if(event.getSource().equals(jMenuItemUser)) {
+			
+			UserView userView = new UserView();
+			userView.initialize();
+			jDesktopPane.add(userView.getFrame());
+			
+		}
+		
 	}
 
 }

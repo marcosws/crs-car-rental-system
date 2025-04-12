@@ -2,22 +2,12 @@ package com.github.marcosws.crs.view.mdi.chid.register.vehicle;
 
 
 import com.github.marcosws.crs.view.mdi.chid.ControlChild;
-import com.github.marcosws.crs.view.mdi.utils.CRSDimension;
 
 public class AutomakerView extends ControlChild {
 	
 
 	public AutomakerView() {
-		
 		super("Montadora");
-        frame.getContentPane().add(panel);
-        frame.pack();
-        frame.setBounds(0, 0, CRSDimension.getWidth(), CRSDimension.getHeight());
-        
-	}
-	
-	public void initialize() {
-		frame.setVisible(true);
 	}
 	
 	@Override
