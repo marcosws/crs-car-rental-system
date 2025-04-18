@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import com.github.marcosws.crs.view.mdi.chid.register.ClientView;
 import com.github.marcosws.crs.view.mdi.chid.register.UserView;
@@ -22,8 +23,10 @@ import com.github.marcosws.crs.view.mdi.chid.register.vehicle.CategoryView;
 import com.github.marcosws.crs.view.mdi.chid.register.vehicle.ModelView;
 import com.github.marcosws.crs.view.mdi.chid.register.vehicle.TypeView;
 import com.github.marcosws.crs.view.mdi.chid.register.vehicle.VehicleView;
-import com.github.marcosws.crs.view.mdi.utils.CRSDimension;
-import com.github.marcosws.crs.view.mdi.utils.CRSStatusBar;
+import com.github.marcosws.crs.view.utils.CRSDimension;
+import com.github.marcosws.crs.view.utils.CRSLoggedUser;
+import com.github.marcosws.crs.view.utils.CRSStatusBar;
+import com.github.marcosws.crs.view.utils.CRSTitlesApplications;
 
 public class CRSMainView extends JFrame implements ActionListener {
 
@@ -35,6 +38,8 @@ public class CRSMainView extends JFrame implements ActionListener {
 	private JMenu jSubMenuVehicle;
 	private JMenu jMenuOperation;
 	private JMenu jMenuConsultation;
+	private JMenu jMenuData;
+	private JMenu jMenuReport;
 	private JMenu jMenuSystem;
 	private JMenu jMenuHelp;
 	
@@ -46,6 +51,7 @@ public class CRSMainView extends JFrame implements ActionListener {
 	
 	private JMenuItem jMenuItemClient;
 	private JMenuItem jMenuItemUser;
+	private JMenuItem jMenuItemRentalData;
 	
 	private JMenuItem jMenuItemRental;
 	private JMenuItem jMenuItemReturn;
@@ -53,6 +59,13 @@ public class CRSMainView extends JFrame implements ActionListener {
 	
 	private JMenuItem jMenuItemRentals;
 	private JMenuItem jMenuItemVehicles;
+	
+	private JMenuItem jMenuItemImport;
+	private JMenuItem jMenuItemExport;
+	
+	private JMenuItem jMenuItemReportRental;
+	private JMenuItem jMenuItemReportReturn;
+	private JMenuItem jMenuItemReportLow;
 	
 	private JMenuItem jMenuItemInformation;
 	private JMenuItem jMenuItemRestart;
@@ -71,6 +84,8 @@ public class CRSMainView extends JFrame implements ActionListener {
 		jSubMenuVehicle = new JMenu("Veículo");
 		jMenuOperation = new JMenu("Operação");
 		jMenuConsultation = new JMenu("Consulta");
+		jMenuData = new JMenu("Dados");
+		jMenuReport = new JMenu("Relatórios");
 		jMenuSystem = new JMenu("Sistema");
 		jMenuHelp = new JMenu("Ajuda");
 		
@@ -82,6 +97,7 @@ public class CRSMainView extends JFrame implements ActionListener {
 		
 		jMenuItemClient = new JMenuItem("Cliente");
 		jMenuItemUser = new JMenuItem("Usuário");
+		jMenuItemRentalData = new JMenuItem("Dados de Locação");
 		
 		jMenuItemRental = new JMenuItem("Locação");
 		jMenuItemReturn = new JMenuItem("Devolução");
@@ -89,6 +105,13 @@ public class CRSMainView extends JFrame implements ActionListener {
 		
 		jMenuItemRentals = new JMenuItem("Locações");
 		jMenuItemVehicles = new JMenuItem("Veículos");
+		
+		jMenuItemImport = new JMenuItem("Importação");
+		jMenuItemExport = new JMenuItem("Exportação");
+		
+		jMenuItemReportRental = new JMenuItem("Relatório de Locações");
+		jMenuItemReportReturn = new JMenuItem("Relatório de Devoluções");
+		jMenuItemReportLow = new JMenuItem("Relatório de Baixa");
 		
 		jMenuItemInformation = new JMenuItem("Informações do Sistema");
 		jMenuItemRestart = new JMenuItem("Reiniciar");
@@ -107,6 +130,7 @@ public class CRSMainView extends JFrame implements ActionListener {
 		
 		jMenuRegister.add(jSubMenuVehicle);
 		jMenuRegister.add(jMenuItemClient);
+		jMenuRegister.add(jMenuItemRentalData);
 		jMenuRegister.addSeparator();
 		jMenuRegister.add(jMenuItemUser);
 		
@@ -116,6 +140,13 @@ public class CRSMainView extends JFrame implements ActionListener {
 		
 		jMenuConsultation.add(jMenuItemRentals);
 		jMenuConsultation.add(jMenuItemVehicles);
+		
+		jMenuData.add(jMenuItemImport);
+		jMenuData.add(jMenuItemExport);
+		
+		jMenuReport.add(jMenuItemReportRental);
+		jMenuReport.add(jMenuItemReportReturn);
+		jMenuReport.add(jMenuItemReportLow);
 		
 		jMenuSystem.add(jMenuItemInformation);
 		jMenuSystem.add(jMenuItemRestart);
@@ -128,6 +159,8 @@ public class CRSMainView extends JFrame implements ActionListener {
 		jMenuBar.add(jMenuRegister);
 		jMenuBar.add(jMenuOperation);
 		jMenuBar.add(jMenuConsultation);
+		jMenuBar.add(jMenuData);
+		jMenuBar.add(jMenuReport);
 		jMenuBar.add(jMenuSystem);
 		jMenuBar.add(jMenuHelp);
 		
@@ -149,13 +182,18 @@ public class CRSMainView extends JFrame implements ActionListener {
 	public void initialize() {
 		
 		this.setVisible(true);
+		
 		jMenuItemAutomaker.addActionListener(this);
 		jMenuItemModel.addActionListener(this);
 		jMenuItemCategory.addActionListener(this);
 		jMenuItemType.addActionListener(this);
 		jMenuItemVehicle.addActionListener(this);
+		
 		jMenuItemClient.addActionListener(this);
 		jMenuItemUser.addActionListener(this);
+		
+		jMenuItemRestart.addActionListener(this);
+		jMenuItemExit.addActionListener(this);
 		
         GraphicsEnvironment gEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle bounds  = gEnvironment.getMaximumWindowBounds();
@@ -216,6 +254,19 @@ public class CRSMainView extends JFrame implements ActionListener {
 			userView.initialize();
 			jDesktopPane.add(userView.getFrame());
 			
+		}
+		else if(event.getSource().equals(jMenuItemRestart)) {
+        	CRSLoginView crsLoginView = new CRSLoginView();
+        	crsLoginView.initialize();
+        	CRSLoggedUser.setUserName("");
+        	CRSLoggedUser.setUserLogin("");
+        	CRSLoggedUser.setUserAdministrator(false);
+        	this.dispose();
+		}
+		else if(event.getSource().equals(jMenuItemExit)) {
+            if(JOptionPane.showConfirmDialog(null, "Deseja sair do sistema?", CRSTitlesApplications.TITLE_SHORT_APPLICATION, JOptionPane.OK_CANCEL_OPTION) == 0){
+                System.exit(0);
+            }
 		}
 		
 	}

@@ -1,4 +1,4 @@
-package com.github.marcosws.crs.view.mdi.utils;
+package com.github.marcosws.crs.view.utils;
 
 public class CRSDimension {
 	

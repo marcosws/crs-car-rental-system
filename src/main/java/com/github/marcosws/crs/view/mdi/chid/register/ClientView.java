@@ -1,12 +1,20 @@
 package com.github.marcosws.crs.view.mdi.chid.register;
 
+import javax.swing.JInternalFrame;
+
 import com.github.marcosws.crs.view.mdi.chid.ControlChild;
+import com.github.marcosws.crs.view.utils.CRSDimension;
 
 public class ClientView extends ControlChild {
 
 	public ClientView() {
-		super("Cliente");
-		// TODO Auto-generated constructor stub
+		super("Cliente","name");
+		
+		
+        frame.getContentPane().add(panel);
+        frame.pack();
+        frame.setBounds(0, 0, CRSDimension.getWidth(), CRSDimension.getHeight());
+		frame.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
 	}
 
 	@Override
@@ -47,6 +55,12 @@ public class ClientView extends ControlChild {
 
 	@Override
 	public void exit() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enableDisableFields(boolean enable) {
 		// TODO Auto-generated method stub
 		
 	}

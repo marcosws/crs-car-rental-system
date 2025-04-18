@@ -1,8 +1,10 @@
-package com.github.marcosws.crs.model;
+package com.github.marcosws.crs.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
 
 import org.sqlite.SQLiteConfig;
 
@@ -13,7 +15,7 @@ public class SQLConnection {
 	 * @author Marcos Willian de Souza
 	 * @return Connection object
 	 */
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		
 	
         SQLiteConfig config = new SQLiteConfig();
@@ -25,7 +27,7 @@ public class SQLConnection {
 			return DriverManager.getConnection(url, config.toProperties());
 		} 
         catch (SQLException e) {
-			e.printStackTrace();
+        	JOptionPane.showMessageDialog(null, "Erro ao conectar ao banco de dados: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 		return null;
 		

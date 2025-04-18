@@ -9,5 +9,6 @@ public interface IControlChild {
 	void confirm();
 	void cancel();
 	void exit();
+	void enableDisableFields(boolean enable);
 
 }

@@ -1,5 +1,6 @@
-package com.github.marcosws.crs.view.mdi.utils;
+package com.github.marcosws.crs.view.utils;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
@@ -19,8 +20,9 @@ public class CRSStatusBar extends JPanel {
 		this.setPreferredSize(new Dimension(CRSDimension.getWidth(), 24));
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
-		statusLabel = new JLabel(" CRS - Car Rental System (Sistema de Locadora de Veículos) ");
+		statusLabel = new JLabel(CRSTitlesApplications.TITLE_APPLICATION);
 		statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		statusLabel.setForeground(Color.GRAY);
 		this.add(statusLabel);
 		
 	}
