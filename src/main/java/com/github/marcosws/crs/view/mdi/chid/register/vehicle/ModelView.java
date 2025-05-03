@@ -43,25 +43,7 @@ public class ModelView extends ControlChild  {
 	}
 
 	@Override
-	public void confirm() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cancel() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void exit() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void enableDisableFields(boolean enable) {
+	public void enableDisableFields() {
 		// TODO Auto-generated method stub
 		
 	}

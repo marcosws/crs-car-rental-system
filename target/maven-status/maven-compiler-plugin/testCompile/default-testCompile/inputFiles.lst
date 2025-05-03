@@ -1,1 +1,4 @@
 /media/marcos/LOCAL01/projetos/eclipse/crs-car-rental-system/src/test/java/com/github/marcosws/crs/model/SQLConnectionTest.java
+/media/marcos/LOCAL01/projetos/eclipse/crs-car-rental-system/src/test/java/com/github/marcosws/crs/model/service/CRSChangePasswordServiceTest.java
+/media/marcos/LOCAL01/projetos/eclipse/crs-car-rental-system/src/test/java/com/github/marcosws/crs/model/service/CRSLoginServiceTest.java
+/media/marcos/LOCAL01/projetos/eclipse/crs-car-rental-system/src/test/java/com/github/marcosws/crs/model/service/utils/CryptographyTest.java

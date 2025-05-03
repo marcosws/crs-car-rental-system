@@ -6,9 +6,6 @@ public interface IControlChild {
 	void update();
 	void delete();
 	void read();
-	void confirm();
-	void cancel();
-	void exit();
-	void enableDisableFields(boolean enable);
+	void enableDisableFields();
 
 }

@@ -1,8 +1,11 @@
 package com.github.marcosws.crs.view.mdi.main;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,8 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import com.github.marcosws.crs.controller.crsmain.CRSChangePasswordController;
-import com.github.marcosws.crs.service.Utils;
+import com.github.marcosws.crs.controller.login.CRSChangePasswordController;
 import com.github.marcosws.crs.view.utils.CRSTitlesApplications;
 
 public class CRSChangePasswordView extends JFrame implements ActionListener{
@@ -83,21 +85,21 @@ public class CRSChangePasswordView extends JFrame implements ActionListener{
 			       
 		buttonConfirmChangePassword = new JButton("Confirmar");
 		buttonConfirmChangePassword.setBounds(10, 220, 130, 44);
-        ImageIcon iconConfirmChangePassword = new ImageIcon(Utils.getFullPathResource("/img/confirm.png"));
+        ImageIcon iconConfirmChangePassword = new ImageIcon(getClass().getResource("/img/confirm.png"));
         buttonConfirmChangePassword.setIcon(iconConfirmChangePassword);
         buttonConfirmChangePassword.setHorizontalTextPosition(SwingConstants.CENTER);
         buttonConfirmChangePassword.setVerticalTextPosition(SwingConstants.BOTTOM);
 		
 		buttonCancel = new JButton("Cancelar");
 		buttonCancel.setBounds(150, 220, 130, 44);
-        ImageIcon iconCancel = new ImageIcon(Utils.getFullPathResource("/img/cancel.png"));
+        ImageIcon iconCancel = new ImageIcon(getClass().getResource("/img/cancel.png"));
         buttonCancel.setIcon(iconCancel);
         buttonCancel.setHorizontalTextPosition(SwingConstants.CENTER);
         buttonCancel.setVerticalTextPosition(SwingConstants.BOTTOM);
 			        
 		buttonExit = new JButton("Sair");
 		buttonExit.setBounds(290, 220, 130, 44);
-        ImageIcon iconExit = new ImageIcon(Utils.getFullPathResource("/img/exit.png"));
+        ImageIcon iconExit = new ImageIcon(getClass().getResource("/img/exit.png"));
         buttonExit.setIcon(iconExit);
         buttonExit.setHorizontalTextPosition(SwingConstants.CENTER);
         buttonExit.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -114,6 +116,12 @@ public class CRSChangePasswordView extends JFrame implements ActionListener{
         panel.add(buttonCancel);
         panel.add(buttonConfirmChangePassword);
         panel.add(buttonExit);
+        
+		List<Image> icons = new ArrayList<Image>();
+		icons.add(new javax.swing.ImageIcon(getClass().getResource("/img/mainicon16.png")).getImage());
+		icons.add(new javax.swing.ImageIcon(getClass().getResource("/img/mainicon32.png")).getImage());
+		this.setIconImages(icons);
+        
 	}
 	
     public void initialize(){
@@ -154,12 +162,16 @@ public class CRSChangePasswordView extends JFrame implements ActionListener{
 	                this.dispose();
 	                break;
 	        	}
+	            case NEW_PASSWORD_EQUALS_TO_ACTUAL:{
+	            	JOptionPane.showMessageDialog(null, "Senha nova igual a senha atual!", "Alterar Senha", JOptionPane.ERROR_MESSAGE);
+	                break;
+	        	}
 	            case DIFFERENT_PASSWORD:{
-	            	JOptionPane.showMessageDialog(null, "implement dif pass");
+	            	JOptionPane.showMessageDialog(null, "Senha diferente da senha nova!", "Alterar Senha", JOptionPane.ERROR_MESSAGE);
 	                break;
 	            }
 	            case EMPTY_PASSWORD:{
-	            	JOptionPane.showMessageDialog(null, "implement vazio");
+	            	JOptionPane.showMessageDialog(null, "Senha vazia!", "Alterar Senha", JOptionPane.ERROR_MESSAGE);
 	                 break;
 	            }
 	            case INACTIVE:{
@@ -178,9 +190,8 @@ public class CRSChangePasswordView extends JFrame implements ActionListener{
             if(JOptionPane.showConfirmDialog(null, "Deseja sair do sistema?", "Login", JOptionPane.OK_CANCEL_OPTION) == 0){
                 System.exit(0);
             }
-    }
+	    }
 	
-		
 	}
 
 }

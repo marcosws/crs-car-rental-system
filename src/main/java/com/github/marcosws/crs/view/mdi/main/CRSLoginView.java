@@ -1,8 +1,11 @@
 package com.github.marcosws.crs.view.mdi.main;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,8 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import com.github.marcosws.crs.controller.crsmain.CRSLoginController;
-import com.github.marcosws.crs.service.Utils;
+import com.github.marcosws.crs.controller.login.CRSLoginController;
 import com.github.marcosws.crs.view.utils.CRSTitlesApplications;
 
 public class CRSLoginView extends JFrame implements ActionListener{
@@ -53,17 +55,17 @@ public class CRSLoginView extends JFrame implements ActionListener{
         buttonChangePassword = new JButton("Alterar Senha");
         buttonExit = new JButton("Sair");
         
-        ImageIcon iconAccess = new ImageIcon(Utils.getFullPathResource("/img/confirm.png"));
+        ImageIcon iconAccess = new ImageIcon(getClass().getResource("/img/confirm.png"));
         buttonAccess.setIcon(iconAccess);
         buttonAccess.setHorizontalTextPosition(SwingConstants.CENTER);
         buttonAccess.setVerticalTextPosition(SwingConstants.BOTTOM);
         
-        ImageIcon iconChangePassword = new ImageIcon(Utils.getFullPathResource("/img/update.png"));
+        ImageIcon iconChangePassword = new ImageIcon(getClass().getResource("/img/update.png"));
         buttonChangePassword.setIcon(iconChangePassword);
         buttonChangePassword.setHorizontalTextPosition(SwingConstants.CENTER);
         buttonChangePassword.setVerticalTextPosition(SwingConstants.BOTTOM);
         
-        ImageIcon iconExit = new ImageIcon(Utils.getFullPathResource("/img/exit.png"));
+        ImageIcon iconExit = new ImageIcon(getClass().getResource("/img/exit.png"));
         buttonExit.setIcon(iconExit);
         buttonExit.setHorizontalTextPosition(SwingConstants.CENTER);
         buttonExit.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -89,6 +91,11 @@ public class CRSLoginView extends JFrame implements ActionListener{
         panel.add(buttonAccess);
         panel.add(buttonChangePassword);
         panel.add(buttonExit);
+        
+		List<Image> icons = new ArrayList<Image>();
+		icons.add(new javax.swing.ImageIcon(getClass().getResource("/img/mainicon16.png")).getImage());
+		icons.add(new javax.swing.ImageIcon(getClass().getResource("/img/mainicon32.png")).getImage());
+		this.setIconImages(icons);
 
 		
 	}

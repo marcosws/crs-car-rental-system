@@ -5,9 +5,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -25,8 +28,8 @@ import com.github.marcosws.crs.view.mdi.chid.register.vehicle.TypeView;
 import com.github.marcosws.crs.view.mdi.chid.register.vehicle.VehicleView;
 import com.github.marcosws.crs.view.utils.CRSDimension;
 import com.github.marcosws.crs.view.utils.CRSLoggedUser;
-import com.github.marcosws.crs.view.utils.CRSStatusBar;
 import com.github.marcosws.crs.view.utils.CRSTitlesApplications;
+import com.github.marcosws.crs.view.utils.custon.CRSStatusBar;
 
 public class CRSMainView extends JFrame implements ActionListener {
 
@@ -167,6 +170,11 @@ public class CRSMainView extends JFrame implements ActionListener {
 		this.setMaximumSize(new Dimension(900, 600));
 		this.jDesktopPane.setBackground(Color.DARK_GRAY);
 		this.setTitle("CRS - Car Rental System (Sistema de Locadora de Veículos)");
+		
+		List<Image> icons = new ArrayList<Image>();
+		icons.add(new javax.swing.ImageIcon(getClass().getResource("/img/mainicon16.png")).getImage());
+		icons.add(new javax.swing.ImageIcon(getClass().getResource("/img/mainicon32.png")).getImage());
+		this.setIconImages(icons);
 		
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

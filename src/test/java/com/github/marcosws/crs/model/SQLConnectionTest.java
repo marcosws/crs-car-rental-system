@@ -10,8 +10,9 @@ public class SQLConnectionTest {
 	
 	@Test
 	void shouldGetConnection() {
-		SQLConnection connection = new SQLConnection();
-		assertNotNull(connection.getConnection());
+
+		assertNotNull(SQLConnection.getConnection());
+		
 	}
 	
 
