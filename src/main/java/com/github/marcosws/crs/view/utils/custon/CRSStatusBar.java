@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import com.github.marcosws.crs.view.utils.CRSDimension;
+import com.github.marcosws.crs.view.utils.CRSLoggedUser;
 import com.github.marcosws.crs.view.utils.CRSTitlesApplications;
 
 public class CRSStatusBar extends JPanel {
@@ -23,7 +24,14 @@ public class CRSStatusBar extends JPanel {
 		this.setPreferredSize(new Dimension(CRSDimension.getWidth(), 24));
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
-		statusLabel = new JLabel(CRSTitlesApplications.TITLE_APPLICATION);
+		String label = CRSTitlesApplications.TITLE_APPLICATION.concat(" | ")
+				.concat("[")
+				.concat(CRSLoggedUser.getDatabaseName())
+				.concat("] | ")
+				.concat(" Usuário: ")
+				.concat(CRSLoggedUser.getUserLogin());
+		
+		statusLabel = new JLabel(label);
 		statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		statusLabel.setForeground(Color.GRAY);
 		this.add(statusLabel);

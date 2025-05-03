@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 
 import org.sqlite.SQLiteConfig;
 
+import com.github.marcosws.crs.model.service.utils.Config;
+
 public class SQLConnection {
 	
 	/**
@@ -17,11 +19,11 @@ public class SQLConnection {
 	 */
 	public static Connection getConnection() {
 		
-	
+		String databaseName = new Config().getDatabaseName();
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
         String path = System.getProperty("user.dir");
-        String url = "jdbc:sqlite:" + path + "/database/dbcrs.db";
+        String url = "jdbc:sqlite:".concat(path).concat("/database/".concat(databaseName));
         
         try {
 			return DriverManager.getConnection(url, config.toProperties());
@@ -32,6 +34,5 @@ public class SQLConnection {
 		return null;
 		
 	}
-	
 
 }

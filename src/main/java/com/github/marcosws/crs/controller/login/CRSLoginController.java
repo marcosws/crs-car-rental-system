@@ -4,6 +4,7 @@ package com.github.marcosws.crs.controller.login;
 import com.github.marcosws.crs.model.dao.register.user.UserDAO;
 import com.github.marcosws.crs.model.entities.register.user.UserEntity;
 import com.github.marcosws.crs.model.service.CRSLoginService;
+import com.github.marcosws.crs.model.service.utils.Config;
 import com.github.marcosws.crs.model.service.utils.LoginStatus;
 import com.github.marcosws.crs.view.mdi.main.CRSLoginView;
 import com.github.marcosws.crs.view.utils.CRSLoggedUser;
@@ -31,6 +32,7 @@ public class CRSLoginController {
 			CRSLoggedUser.setUserName(user.getUserName());
 			CRSLoggedUser.setUserLogin(user.getUserLogin());
 			CRSLoggedUser.setUserAdministrator(user.isUserAdministrator());
+			CRSLoggedUser.setDatabaseName(new Config().getDatabaseName());
 			
 		}
 		return loginStatus;

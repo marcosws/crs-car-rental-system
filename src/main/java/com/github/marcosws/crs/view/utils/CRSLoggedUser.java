@@ -6,6 +6,7 @@ public class CRSLoggedUser {
 	private static String userName;
 	private static String userLogin;
 	private static boolean userAdministrator;
+	private static String databaseName;
 	
 	public static String getUserName() {
 		return userName;
@@ -25,9 +26,11 @@ public class CRSLoggedUser {
 	public static void setUserAdministrator(boolean userAdministrator) {
 		CRSLoggedUser.userAdministrator = userAdministrator;
 	}
-
+	public static String getDatabaseName() {
+		return databaseName;
+	}
+	public static void setDatabaseName(String databaseName) {
+		CRSLoggedUser.databaseName = databaseName;
+	}
 	
-	
-	
-
 }
